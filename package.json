@@ -24,7 +24,7 @@
     "productivity",
     "code snippets"
   ],
-  "icon": "images/icon.png",
+  "icon": "resources/extension_icon.png",
   "galleryBanner": {
     "color": "#C80000",
     "theme": "dark"
@@ -129,7 +129,7 @@
         {
           "id": "codeprompt-companion",
           "title": "CodePrompt Companion",
-          "icon": "images/icon.svg"
+          "icon": "resources/extension_icon.png"
         }
       ]
     },
@@ -138,7 +138,7 @@
         {
           "id": "promptSuggestions",
           "name": "Prompt Suggestions",
-          "icon": "images/icon.svg",
+          "icon": "resources/extension_icon.png",
           "type": "tree"
         },
         {
