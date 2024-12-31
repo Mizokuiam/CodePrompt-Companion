@@ -1,0 +1,320 @@
+{
+  "name": "codeprompt-companion",
+  "displayName": "CodePrompt Companion",
+  "description": "AI-powered prompt suggestions for web development",
+  "version": "0.0.1",
+  "publisher": "Mizokuiam",
+  "author": {
+    "name": "Mizokuiam"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mizokuiam/CodePrompt-Companion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mizokuiam/CodePrompt-Companion/issues"
+  },
+  "homepage": "https://github.com/Mizokuiam/CodePrompt-Companion/blob/main/README.md",
+  "keywords": [
+    "prompt",
+    "ai",
+    "gpt",
+    "openai",
+    "web development",
+    "productivity",
+    "code snippets"
+  ],
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "CodePrompt Companion",
+      "properties": {
+        "codepromptCompanion.ai.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable AI features"
+        },
+        "codepromptCompanion.ai.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenAI API Key"
+        },
+        "codepromptCompanion.ai.model": {
+          "type": "string",
+          "default": "gpt-3.5-turbo",
+          "enum": [
+            "gpt-3.5-turbo",
+            "gpt-4"
+          ],
+          "description": "AI model to use"
+        },
+        "codepromptCompanion.ai.temperature": {
+          "type": "number",
+          "default": 0.7,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "AI temperature (0-1)"
+        },
+        "codepromptCompanion.ai.maxTokens": {
+          "type": "number",
+          "default": 150,
+          "description": "Maximum tokens for AI responses"
+        },
+        "codepromptCompanion.features.search": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable search functionality"
+        },
+        "codepromptCompanion.features.templates": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable prompt templates"
+        },
+        "codepromptCompanion.features.favorites": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable favorites"
+        },
+        "codepromptCompanion.features.analytics": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable analytics"
+        },
+        "codepromptCompanion.theme": {
+          "type": "string",
+          "default": "auto",
+          "enum": [
+            "light",
+            "dark",
+            "auto"
+          ],
+          "description": "Theme for icons and UI"
+        },
+        "codepromptCompanion.sortOrder": {
+          "type": "string",
+          "default": "alphabetical",
+          "enum": [
+            "alphabetical",
+            "mostUsed",
+            "recentlyUsed"
+          ],
+          "description": "Default sort order for prompts"
+        },
+        "codepromptCompanion.maxHistoryItems": {
+          "type": "number",
+          "default": 100,
+          "description": "Maximum number of history items to keep"
+        },
+        "codepromptCompanion.showPreview": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show preview of prompts"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeprompt-companion",
+          "title": "CodePrompt Companion",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "codeprompt-companion": [
+        {
+          "id": "promptSuggestions",
+          "name": "Prompt Suggestions",
+          "icon": "images/icon.svg",
+          "type": "tree"
+        },
+        {
+          "id": "promptFavorites",
+          "name": "Favorites",
+          "icon": "images/star.svg",
+          "type": "tree",
+          "when": "config.codepromptCompanion.features.favorites"
+        },
+        {
+          "id": "promptHistory",
+          "name": "History",
+          "icon": "images/history.svg",
+          "type": "tree",
+          "when": "config.codepromptCompanion.features.analytics"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "codeprompt-companion.refreshSuggestions",
+        "title": "Refresh Prompt Suggestions",
+        "category": "CodePrompt Companion",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "codeprompt-companion.addCustomPrompt",
+        "title": "Add Custom Prompt",
+        "category": "CodePrompt Companion",
+        "icon": "$(add)"
+      },
+      {
+        "command": "codeprompt-companion.copyPrompt",
+        "title": "Copy Prompt",
+        "category": "CodePrompt Companion"
+      },
+      {
+        "command": "codeprompt-companion.toggleFavorite",
+        "title": "Toggle Favorite",
+        "category": "CodePrompt Companion",
+        "icon": "$(star)"
+      },
+      {
+        "command": "codeprompt-companion.showAnalytics",
+        "title": "Show Analytics",
+        "category": "CodePrompt Companion",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "codeprompt-companion.editPrompt",
+        "title": "Edit Prompt",
+        "category": "CodePrompt Companion",
+        "icon": "$(edit)"
+      },
+      {
+        "command": "codeprompt-companion.deletePrompt",
+        "title": "Delete Prompt",
+        "category": "CodePrompt Companion",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "codeprompt-companion.exportPrompts",
+        "title": "Export Prompts",
+        "category": "CodePrompt Companion",
+        "icon": "$(export)"
+      },
+      {
+        "command": "codeprompt-companion.importPrompts",
+        "title": "Import Prompts",
+        "category": "CodePrompt Companion",
+        "icon": "$(import)"
+      },
+      {
+        "command": "codeprompt-companion.generateAIPrompt",
+        "title": "Generate AI Prompt",
+        "category": "CodePrompt Companion",
+        "icon": "$(sparkle)"
+      },
+      {
+        "command": "codeprompt-companion.improvePrompt",
+        "title": "Improve with AI",
+        "category": "CodePrompt Companion",
+        "icon": "$(lightbulb)"
+      },
+      {
+        "command": "codeprompt-companion.searchPrompts",
+        "title": "Search Prompts",
+        "category": "CodePrompt Companion",
+        "icon": "$(search)"
+      },
+      {
+        "command": "codeprompt-companion.createTemplate",
+        "title": "Create Template",
+        "category": "CodePrompt Companion",
+        "icon": "$(file-code)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "codeprompt-companion.refreshSuggestions",
+          "when": "view == promptSuggestions",
+          "group": "navigation"
+        },
+        {
+          "command": "codeprompt-companion.addCustomPrompt",
+          "when": "view == promptSuggestions",
+          "group": "navigation"
+        },
+        {
+          "command": "codeprompt-companion.generateAIPrompt",
+          "when": "view == promptSuggestions && config.codepromptCompanion.ai.enabled",
+          "group": "navigation"
+        },
+        {
+          "command": "codeprompt-companion.searchPrompts",
+          "when": "view == promptSuggestions && config.codepromptCompanion.features.search",
+          "group": "navigation"
+        },
+        {
+          "command": "codeprompt-companion.showAnalytics",
+          "when": "view == promptHistory && config.codepromptCompanion.features.analytics",
+          "group": "navigation"
+        },
+        {
+          "command": "codeprompt-companion.createTemplate",
+          "when": "view == promptSuggestions && config.codepromptCompanion.features.templates",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "codeprompt-companion.editPrompt",
+          "when": "view == promptSuggestions && viewItem == prompt",
+          "group": "inline"
+        },
+        {
+          "command": "codeprompt-companion.deletePrompt",
+          "when": "view == promptSuggestions && viewItem == prompt",
+          "group": "inline"
+        },
+        {
+          "command": "codeprompt-companion.toggleFavorite",
+          "when": "viewItem == prompt && config.codepromptCompanion.features.favorites",
+          "group": "inline"
+        },
+        {
+          "command": "codeprompt-companion.improvePrompt",
+          "when": "viewItem == prompt && config.codepromptCompanion.ai.enabled",
+          "group": "inline"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@types/node-fetch": "^2.6.4",
+    "@types/vscode": "^1.80.0",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^8.45.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.12"
+  }
+}

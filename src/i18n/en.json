@@ -1,0 +1,29 @@
+{
+    "prompts": {
+        "categories": {
+            "html": "HTML",
+            "css": "CSS",
+            "javascript": "JavaScript",
+            "react": "React",
+            "performance": "Performance",
+            "accessibility": "Accessibility",
+            "seo": "SEO"
+        },
+        "actions": {
+            "copy": "Copy Prompt",
+            "edit": "Edit Prompt",
+            "delete": "Delete Prompt",
+            "export": "Export Prompts",
+            "import": "Import Prompts",
+            "add": "Add Custom Prompt"
+        },
+        "messages": {
+            "promptCopied": "Prompt copied to clipboard!",
+            "promptDeleted": "Prompt deleted successfully",
+            "promptEdited": "Prompt updated successfully",
+            "promptsExported": "Prompts exported successfully",
+            "promptsImported": "Prompts imported successfully",
+            "confirmDelete": "Are you sure you want to delete this prompt?"
+        }
+    }
+}
