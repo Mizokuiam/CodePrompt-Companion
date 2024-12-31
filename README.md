@@ -4,6 +4,8 @@
 
 Ever found yourself rewriting the same prompts for AI assistants? CodePrompt Companion streamlines your workflow by providing a smart, organized way to manage and reuse your coding prompts. Built specifically for web developers, it helps you maintain a curated library of effective prompts for HTML, CSS, JavaScript, and more.
 
+![CodePrompt Companion Interface](resources/interface.png)
+
 ## ✨ Key Features
 
 ### 🎯 Smart Prompt Organization
@@ -47,6 +49,8 @@ Ever found yourself rewriting the same prompts for AI assistants? CodePrompt Com
 
 ## 💡 Usage Examples
 
+![Analytics Dashboard](resources/prompt-analystics.png)
+
 ### Managing Prompts
 1. **Add a Custom Prompt**:
    - Click the + icon in the sidebar
@@ -76,6 +80,8 @@ Ever found yourself rewriting the same prompts for AI assistants? CodePrompt Com
      "codepromptCompanion.ai.temperature": 0.7
    }
    ```
+
+![OpenAI API Key Setup](resources/openai-api-key.png)
 
 ## ⚙️ Configuration
 

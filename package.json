@@ -2,7 +2,7 @@
   "name": "codeprompt-companion",
   "displayName": "CodePrompt Companion",
   "description": "AI-powered prompt suggestions for web development",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Mizokuiam",
   "author": {
     "name": "Mizokuiam"
