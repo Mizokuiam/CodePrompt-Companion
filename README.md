@@ -1,3 +1,8 @@
+![GitHub stars](https://img.shields.io/github/stars/Mizokuiam/CodePrompt-Companion)
+![GitHub forks](https://img.shields.io/github/forks/Mizokuiam/CodePrompt-Companion)
+![GitHub issues](https://img.shields.io/github/issues/Mizokuiam/CodePrompt-Companion)
+![GitHub license](https://img.shields.io/github/license/Mizokuiam/CodePrompt-Companion)
+
 # CodePrompt Companion
 
 > Your intelligent companion for managing and optimizing coding prompts in VS Code
