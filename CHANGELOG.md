@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-01-15
+
+- Create CHANGELOG.md (e8d1cf7 by Mizokuiam)
+
 ## 2025-01-14
 
 - Update badges (c81b203 by Mizokuiam)
